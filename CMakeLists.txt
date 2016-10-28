@@ -107,8 +107,8 @@ endif(KAGUYA_BUILD_BENCHMARK)
 endif(EMSCRIPTEN)
 
 
-
 find_program(CTEST_MEMORYCHECK_COMMAND NAMES valgrind)
 set(MEMORYCHECK_COMMAND_OPTIONS "--error-exitcode=1 --trace-children=yes --leak-check=full" )
+include(CTest)
 enable_testing()
 add_subdirectory(test)
