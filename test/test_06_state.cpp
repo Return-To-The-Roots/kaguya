@@ -356,7 +356,7 @@ KAGUYA_TEST_FUNCTION_DEF(allocation_error_test)(kaguya::State &) {
       state["data"] = kaguya::NewTable();
       Foo foodata;
       for (size_t i = 0; i < alloclimit; ++i) {
-        state("data[" + to_string(i) + "] ='abc'");
+        state("data[" + to_string(i) + "] = 'abc'");
         state["data"][i + alloclimit * 2] = alloctest();
         state["data"][i + alloclimit * 3] = 1;
         state["data"][i + alloclimit * 4] = "str";
