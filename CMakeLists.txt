@@ -1,5 +1,5 @@
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.16..3.20)
 project(Kaguya)
 
 include(cmake/FindLua.cmake)
@@ -45,6 +45,9 @@ if(NOT MSVC)#-Wall nonsense on MSVC
   add_definitions(-pedantic)
   add_definitions(-Wno-variadic-macros)
   add_definitions ("-Wno-unused-local-typedefs")
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13)
+    add_definitions(-Wno-dangling-reference)
+  endif()
   add_definitions ("-Wno-unknown-warning-option")
   #add_definitions("-std=c++11")
 endif(NOT MSVC)
